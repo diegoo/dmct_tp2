@@ -36,7 +36,7 @@ La relación modelada por cada arista es "X buscó a Y para pedirle consejo prof
  
 * medidas de centralidad:
 
- [![betweenness_vertices](https://github.com/diegoo/dmct_tp2/blob/master/betweenness_vertices.png.png)](#betweenness_vertices)
+ [![betweenness_vertices](https://github.com/diegoo/dmct_tp2/blob/master/betweenness_vertices.png)](#betweenness_vertices)
 
   - puntos importantes (0-indexed) con medida de betweenness mucho más alta que los demás: 
     - 15, 771.88 {'status': 1, 'office': 1, 'gender': 1, 'age': 46, 'practice': 2, 'law_school': 1, 'seniority': 20}) 
