@@ -23,6 +23,7 @@ red_consejo.vs["law_school"] =  atributos_de_vertices["law_school"]
 
 # plot(red_consejo)
 
+
 ## 2. caracterización topológica
 
 print(red_consejo.ecount())
@@ -50,19 +51,8 @@ print(list(nodos_con_maximo_grado_all))
 # nodo_con_maximo_grado_total = red_consejo.vs.select(_degree = red_consejo.maxdegree())
 # print(nodo_con_maximo_grado_total.find())
 
-
-
-
-
-
-
-
-
 [(a,b) for (a,b) in enumerate(red_consejo.degree(type="in")) if b == red_consejo.maxdegree(type="in")]
-Out[291]: [(16, 29), (25, 29)]
-
-
-
+# [(16, 29), (25, 29)]
 
 # histograma de grados
 
@@ -99,6 +89,9 @@ pylab.ylabel(u"centralidad")
 pylab.title("medida de centralidad: closeness")
 #pylab.show()
 
+# vértices que se destacan por alto closeness (i.e. baja distancia a los otros vértices) 
+# [(v,b) for (v,b) in enumerate(red_consejo_closeness) if b < 0.4]
+
 red_consejo_centralidad_por_autovalor = red_consejo.evcent()
 pylab.plot([vertice.index for vertice in red_consejo.vs], red_consejo_centralidad_por_autovalor)
 pylab.xlabel(u"vértice")
@@ -109,12 +102,9 @@ pylab.title("medida de centralidad: autovalores")
 # red_consejo_betweenness_normalizados = [x / 771.885 for x in red_consejo_betweenness]
 # pylab.plot([vertice.index for vertice in red_consejo.vs], [abs(a - b) for (a,b) in zip(red_consejo_betweenness_normalizados, red_consejo_centralidad_por_autovalor)])
 
-vertice_mayor_betweenness = [x for x in red_consejo.vs if red_consejo_betweenness[x.index] == max(red_consejo_betweenness)][0]
-vertice_mayor_closeness = [x for x in red_consejo.vs if red_consejo_closeness[x.index] == max(red_consejo_closeness)][0]
-# en ambos casos: 15,{'status': 1, 'office': 1, 'gender': 1, 'age': 46, 'practice': 2, 'law_school': 1, 'seniority': 20})
-
-
-
+vertice_mayor_betweenness = [x for x in red_consejo.vs if red_consejo_betweenness[x.index] == max(red_consejo_betweenness)]
+vertice_mayor_closeness = [x for x in red_consejo.vs if red_consejo_closeness[x.index] == max(red_consejo_closeness)]
+vertice_mayor_centralidad_por_autovalor = [x for x in red_consejo.vs if red_consejo_centralidad_por_autovalor[x.index] == max(red_consejo_centralidad_por_autovalor)]
 
 ## 3. buscar correlaciones entre medidas de centralidad y atributos de los vértices
 
@@ -122,28 +112,36 @@ vertice_mayor_closeness = [x for x in red_consejo.vs if red_consejo_closeness[x.
 pylab.hist(red_consejo.vs["age"], bins=35)
 
 print(pearsonr(red_consejo_betweenness, red_consejo.vs["status"]))
-(-0.23732194274061164, 0.046285106427618829)
-
 print(pearsonr(red_consejo_betweenness, red_consejo.vs["gender"]))
-(-0.051815545105643575, 0.66781823077085289)
-
 print(pearsonr(red_consejo_betweenness, red_consejo.vs["age"]))
-(0.16475816855013578, 0.16974028798784357)
-
 print(pearsonr(red_consejo_betweenness, red_consejo.vs["seniority"]))
-(0.21122194054899776, 0.07702662066458045)
-
 print(pearsonr(red_consejo_betweenness, red_consejo.vs["office"]))
-(-0.14797927383206555, 0.21811473766259087)
-
-print(pearsonr(red_consejo_betweenness, red_consejo.vs["status"]))
-(-0.23732194274061164, 0.046285106427618829)
-
 print(pearsonr(red_consejo_betweenness, red_consejo.vs["law_school"]))
-(-0.28393163991364734, 0.016413220954138073)
-
 print(pearsonr(red_consejo_betweenness, red_consejo.vs["practice"]))
-(0.26813510883890224, 0.02377068212044943)
+
+# (-0.23732194274061164, 0.046285106427618829)
+# (-0.051815545105643575, 0.66781823077085289)
+# (0.16475816855013578, 0.16974028798784357)
+# (0.21122194054899776, 0.07702662066458045)
+# (-0.14797927383206555, 0.21811473766259087)
+# (-0.28393163991364734, 0.016413220954138073)
+# (0.26813510883890224, 0.02377068212044943)
+
+print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["status"]))
+print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["gender"]))
+print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["age"]))
+print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["seniority"]))
+print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["office"]))
+print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["law_school"]))
+print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["practice"]))
+
+# (-0.68275628890445883, 5.4414842455456928e-11)
+# (-0.20988967839008382, 0.078952569368606479)
+# (0.52825402910516117, 2.1936856999030843e-06)
+# (0.64867071910399554, 9.5307252679818568e-10)
+# (-0.20681140897402797, 0.083549177399459204)
+# (-0.40234844288785476, 0.00050458116868182961)
+# (0.16085302776512134, 0.18022634794134504)
 
 
 ## 4. buscar comunidades
