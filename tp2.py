@@ -92,19 +92,19 @@ pylab.title("medida de centralidad: closeness")
 # vértices que se destacan por alto closeness (i.e. baja distancia a los otros vértices) 
 # [(v,b) for (v,b) in enumerate(red_consejo_closeness) if b < 0.4]
 
-red_consejo_centralidad_por_autovalor = red_consejo.evcent()
-pylab.plot([vertice.index for vertice in red_consejo.vs], red_consejo_centralidad_por_autovalor)
+red_consejo_centralidad_por_autovector = red_consejo.evcent()
+pylab.plot([vertice.index for vertice in red_consejo.vs], red_consejo_centralidad_por_autovector)
 pylab.xlabel(u"vértice")
 pylab.ylabel(u"centralidad")
-pylab.title("medida de centralidad: autovalores")
+pylab.title("medida de centralidad: autovectores")
 #pylab.show()
 
 # red_consejo_betweenness_normalizados = [x / 771.885 for x in red_consejo_betweenness]
-# pylab.plot([vertice.index for vertice in red_consejo.vs], [abs(a - b) for (a,b) in zip(red_consejo_betweenness_normalizados, red_consejo_centralidad_por_autovalor)])
+# pylab.plot([vertice.index for vertice in red_consejo.vs], [abs(a - b) for (a,b) in zip(red_consejo_betweenness_normalizados, red_consejo_centralidad_por_autovector)])
 
 vertice_mayor_betweenness = [x for x in red_consejo.vs if red_consejo_betweenness[x.index] == max(red_consejo_betweenness)]
 vertice_mayor_closeness = [x for x in red_consejo.vs if red_consejo_closeness[x.index] == max(red_consejo_closeness)]
-vertice_mayor_centralidad_por_autovalor = [x for x in red_consejo.vs if red_consejo_centralidad_por_autovalor[x.index] == max(red_consejo_centralidad_por_autovalor)]
+vertice_mayor_centralidad_por_autovector = [x for x in red_consejo.vs if red_consejo_centralidad_por_autovector[x.index] == max(red_consejo_centralidad_por_autovector)]
 
 ## 3. buscar correlaciones entre medidas de centralidad y atributos de los vértices
 
@@ -127,13 +127,13 @@ print(pearsonr(red_consejo_betweenness, red_consejo.vs["practice"]))
 # (-0.28393163991364734, 0.016413220954138073)
 # (0.26813510883890224, 0.02377068212044943)
 
-print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["status"]))
-print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["gender"]))
-print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["age"]))
-print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["seniority"]))
-print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["office"]))
-print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["law_school"]))
-print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["practice"]))
+print(pearsonr(red_consejo_centralidad_por_autovector, red_consejo.vs["status"]))
+print(pearsonr(red_consejo_centralidad_por_autovector, red_consejo.vs["gender"]))
+print(pearsonr(red_consejo_centralidad_por_autovector, red_consejo.vs["age"]))
+print(pearsonr(red_consejo_centralidad_por_autovector, red_consejo.vs["seniority"]))
+print(pearsonr(red_consejo_centralidad_por_autovector, red_consejo.vs["office"]))
+print(pearsonr(red_consejo_centralidad_por_autovector, red_consejo.vs["law_school"]))
+print(pearsonr(red_consejo_centralidad_por_autovector, red_consejo.vs["practice"]))
 
 # (-0.68275628890445883, 5.4414842455456928e-11)
 # (-0.20988967839008382, 0.078952569368606479)
@@ -146,20 +146,18 @@ print(pearsonr(red_consejo_centralidad_por_autovalor, red_consejo.vs["practice"]
 
 ## 4. buscar comunidades
 
-# armar comunidades con varios métodos
+# métodos:
 
-funciones_deteccion_comunidad = [
-    Graph.community_edge_betweenness,
-    Graph.community_infomap,
-    Graph.community_label_propagation,
-    Graph.community_walktrap,
-    Graph.community_leading_eigenvector
-]
+# Graph.community_edge_betweenness
+# Graph.community_infomap
+# Graph.community_label_propagation
+# Graph.community_walktrap
+# Graph.community_leading_eigenvector
 
-red_consejo_comunidades_por_metodo = [f(red_consejo) for f in funciones_deteccion_comunidad]
+comunidades_por_auto = [f(red_consejo) for f in funciones_deteccion_comunidad]
 
 for comunidades in red_consejo_comunidades_por_metodo:
-    print summary(comunidad)
+    print summary(comunidades)
     n = communities.optimal_count
     communities.as_clustering(num_communities)
 

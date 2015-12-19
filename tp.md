@@ -46,22 +46,24 @@ La relación modelada por cada arista es "X buscó a Y para pedirle consejo prof
 
   Llama la atención el vértice 59, porque se diferencia del resto: es mujer, es joven, no es socia, y estuvo pocos años en la empresa.
 
- [![autovalores_vertices](https://github.com/diegoo/dmct_tp2/blob/master/autovalores_vertices.png)](#autovalores_vertices)
+ [![autovectores_vertices](https://github.com/diegoo/dmct_tp2/blob/master/autovectores_vertices.png)](#autovectores_vertices)
  
-  - puntos importantes (0-indexed) con alta medida de centralidad por autovalor:
+  - puntos importantes (0-indexed) con alta medida de centralidad por autovector:
     - 16, 1.00 {'status': 1, 'office': 1, 'gender': 1, 'age': 50, 'practice': 2, 'law_school': 1, 'seniority': 23}) 
     - 25, 0.74 {'status': 1, 'office': 1, 'gender': 1, 'age': 41, 'practice': 1, 'law_school': 3, 'seniority': 15})
 
 
 ### 3. Buscar correlaciones entre medidas de centralidad y atributos de los vértices
 
-Si calculamos la correlación de Pearson entre los vectores de centralidad por autovalor y los vectores de cada uno de los atributos, las correlaciones con p-valor más significativos son:
+Si calculamos la correlación de Pearson entre los vectores de centralidad por autovector y los vectores de cada uno de los atributos, las correlaciones con p-valor más significativos son:
    - status (0.68)
    - seniority (0.64)
    - age (0.52)
 
 
-### 4.
+### 4. Buscar comunidades y determinar si hay asociación entre comunidades y características personales
+
+
 
 ### 5.
 
