@@ -20,7 +20,9 @@ La relación modelada por cada arista es "X buscó a Y para pedirle consejo prof
 * longitud de camino promedio:	  2.33
 * análisis de grados:		
   - plot histograma de grados
- 
+
+ [![histograma_grados](https://github.com/diegoo/dmct_tp2/blob/master/histograma_grados_red_consejos.png)](#grados)
+
   - vértice con mayor grado: observación nro. 17 (16 si 0-indexed), con grado 50.
     {'status': 1,
      'office': 1,
