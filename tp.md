@@ -73,13 +73,13 @@ Un análisis del grado de los individuos en la red de consejos revela estos dato
 
  [![walktrap_clusters](https://github.com/diegoo/dmct_tp2/blob/master/walktrap_clusters.png)](#walktrap_clusters)
 
-cluster 0 (en rojo): Los socios importantes, dan y reciben consejo entre pares. Son los más buscados y, en su mayoría, muy dispuestos a consultar a otros => los más centrales en la red.
-
-cluster 1 (en azul): Grupo que resulta de la polarización entre oficinas.
-
-cluster 2 (en verde): El escalón de socios que sigue en importancia al cluster 0. Son muy buscados por su autoridad, pero menos dispuestos a pedir consejo que los miembros del cluster 0.
-
-cluster 4 (en rosa): Son *associates* (empleados no-socios), con poco seniority. Piden consejo a otros, pero ellos mismos son poco buscados por su consejo (grado saliente > grado entrante). En el libro de Lazega se corresponden con el cluster periférico llamado "the boys" (en criollo, los "che pibe" que hacen el trabajo de base, es decir, no los que toman las decisiones).
+ - cluster 0 (en rojo): Los socios importantes, dan y reciben consejo entre pares. Son los más buscados y, en su mayoría, muy dispuestos a consultar a otros => los más centrales en la red.
+  
+ - cluster 1 (en azul): Grupo que resulta de la polarización entre oficinas.
+  
+ - cluster 2 (en verde): El escalón de socios que sigue en importancia al cluster 0. Son muy buscados por su autoridad, pero menos dispuestos a pedir consejo que los miembros del cluster 0.
+  
+ - cluster 4 (en rosa): Son *associates* (empleados no-socios), con poco seniority. Piden consejo a otros, pero ellos mismos son poco buscados por su consejo (grado saliente > grado entrante). En el libro de Lazega se corresponden con el cluster periférico llamado "the boys" (en criollo, los "che pibe" que hacen el trabajo de base, es decir, no los que toman las decisiones).
 
 
 ### 5.
