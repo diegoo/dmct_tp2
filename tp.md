@@ -60,6 +60,10 @@ Si calculamos la correlación de Pearson entre los vectores de centralidad por a
    - seniority (0.64)
    - age (0.52)
 
+ [![edad](https://github.com/diegoo/dmct_tp2/blob/master/edad.png)](#edad)
+ 
+Los 3 atributos están relacionados. Edad y seniority van de la mano, y el status de partner se alcanza después de años como associate. El histograma de la distribución de edades muestra que la firma sigue la tradición *up-or-out*: los abogados que no mejoran su desempeño para seguir ascendiendo después de cierta edad, se van. Por eso hay picos entre los de 30 que hacen el trabajo duro y los de 45-60 que llegaron a partners, pero hay un hueco alrededor de los 40.
+
 
 ### 4. Buscar comunidades y determinar si hay asociación entre comunidades y características personales
 
@@ -83,4 +87,17 @@ Un análisis del grado de los individuos en la red de consejos revela estos dato
 
 
 ### 5.
+
+Del análisis de la red de consejos se desprenden algunas conclusiones:
+
+- La red existe porque la firma trató de evitar la burocracia de los mecanismos formales de *peer review*. Si hubiera un mecanismo formal, la red sería mucho más jerárquica y vertical.
+
+- Es una red armada alrededor de la distribución de conocimientos, y ese conocimiento se gana con la experiencia (por eso los partners más senior son centrales, incluso cuando hay jóvenes que los superan en educación; el consejo en general no tiene que ver con la Ley, sino con el trato de clientes, y eso se gana con los años en la empresa).
+
+- Fuera del núcleo central, en el resto de los clusters los abogados buscan consejo en su entorno, y fuera de su entorno sólo cuando es necesario. El sistema de consejo se establece por tarea, pero está predominantemente guiado por seniority. La red de consejo es bastante jerárquica (no se busca consejo "hacia abajo"). 
+
+- En un momento hubo una fusión entre empresas y por eso ahora hay varias oficinas. La oficina 1 era la central, pero la oficina 2 tenía clientes más grandes (p. 76); esas diferencias hicieron surgir cierta rivalidad entre las oficinas. Esa tendencia al aislamiento fue detectada, y la podemos confirmar con el cluster de la oficina 2. La fusión también trajo conflictos de "cultura" o forma de hacer las cosas. No todas las especialidades estaban representadas en todas las oficinas, entonces un partner a veces tenía que consultar a un associate de otra oficina, pero en general los abogados tenían una opinión superficial sobre los de otras oficinas. El aislamiento en la firma se quiso contrarrestar con mecanismos sociales "informales".
+
+- En vista de todo esto, una posible sugerencia sería implementar algún sistema de rotación, donde los associates tengan que cambiar de oficina a cambio de un ascenso y compensación monetaria. Boston y Providence quedan cerca: Hartford queda a unas 2 horas en auto. Con esa medida se forjarían más lazos entre los equipos.
+
 
