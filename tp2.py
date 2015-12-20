@@ -10,7 +10,7 @@ from itertools import groupby
 
 ## 1.1 construir grafo ADVICE
 
-red_consejo = Graph.Read_Adjacency("lazega.red.consejo.data", mode=ADJ_DIRECTED))
+red_consejo = Graph.Read_Adjacency("lazega.red.consejo.data", mode=ADJ_DIRECTED)
 # plot(red_consejo)
 
 red_consejo.vs["status"] =      atributos_de_vertices["status"]  
@@ -146,12 +146,12 @@ print(pearsonr(red_consejo_centralidad_por_autovector, red_consejo.vs["practice"
 
 ## 4. buscar comunidades
 
-# métodos:
+# métodos disponibles:
 
-# Graph.community_edge_betweenness
-# Graph.community_infomap
 # Graph.community_label_propagation
+# Graph.community_edge_betweenness
 # Graph.community_walktrap
+# Graph.community_infomap
 # Graph.community_leading_eigenvector
 
 comunidades = red_consejo.community_edge_betweenness()
@@ -166,37 +166,51 @@ cluster24 = [v for v in red_consejo.vs if v.index in [24, 31, 49, 52, 68]]
 comunidades = red_consejo.community_label_propagation()
 clusters_con_vertices = sorted([(cluster, vertice) for (vertice, cluster) in zip(range(0, 71), comunidades.membership)])
 for cluster, vertices in groupby(clusters_con_vertices, lambda x: x[0]): print(cluster, len(list(vertices)))
-cluster0 = [v for v in red_consejo.vs if v.index in [b for (a,b) in [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (0, 10), (0, 11), (0, 12), (0, 13), (0, 14), (0, 15), (0, 16), (0, 17), (0, 18), (0, 19), (0, 20), (0, 21), (0, 22), (0, 23), (0, 24), (0, 25), (0, 26), (0, 27), (0, 28), (0, 29), (0, 30), (0, 31), (0, 32), (0, 33), (0, 34), (0, 35), (0, 36), (0, 37), (0, 38), (0, 39), (0, 40), (0, 41), (0, 42), (0, 44), (0, 45), (0, 47), (0, 48), (0, 49), (0, 50), (0, 51), (0, 52), (0, 53), (0, 54), (0, 55), (0, 56), (0, 57), (0, 59), (0, 63), (0, 64), (0, 69)]]]
-# (0, [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (0, 10), (0, 11), (0, 12), (0, 13), (0, 14), (0, 15), (0, 16), (0, 17), (0, 18), (0, 19), (0, 20), (0, 21), (0, 22), (0, 23), (0, 24), (0, 25), (0, 26), (0, 27), (0, 28), (0, 29), (0, 30), (0, 31), (0, 32), (0, 33), (0, 34), (0, 35), (0, 36), (0, 37), (0, 38), (0, 39), (0, 40), (0, 41), (0, 42), (0, 44), (0, 45), (0, 47), (0, 48), (0, 49), (0, 50), (0, 51), (0, 52), (0, 53), (0, 54), (0, 55), (0, 56), (0, 57), (0, 59), (0, 63), (0, 64), (0, 69)])
-# (3, [(3, 58), (3, 68)])
-# (4, [(4, 60), (4, 61)])
-# (1, [(1, 43)])
-# (2, [(2, 46)])
-# (5, [(5, 62)])
-# (6, [(6, 65)])
-# (7, [(7, 66)])
-# (8, [(8, 67)])
-# (9, [(9, 70)])
 
 comunidades = red_consejo.community_walktrap()
 clusters = comunidades.as_clustering()
-for cluster, vertices in groupby(clusters, lambda x: x[0]): print(cluster, list(vertices))
-cluster0 = [v for v in red_consejo.vs if v.index in [0, 1, 3, 6, 7, 9, 11, 13, 14, 15, 16, 18, 19, 21, 22, 27, 29, 32, 34, 36, 43]]
-cluster2 = [v for v in red_consejo.vs if v.index in [2, 4, 5, 17, 24, 31, 45, 49, 50, 52, 68]]
-cluster8 = [v for v in red_consejo.vs if v.index in [8, 10, 12, 20, 23, 25, 26, 28, 33, 37, 39, 42, 44, 46]]
-cluster30 = [v for v in red_consejo.vs if v.index in [30, 35, 47, 48, 57, 67]]
-cluster38 = [v for v in red_consejo.vs if v.index in [38, 40, 41, 51, 53, 55, 56, 58, 60, 65, 66, 69]]
-# (0, [[0, 1, 3, 6, 7, 9, 11, 13, 14, 15, 16, 18, 19, 21, 22, 27, 29, 32, 34, 36, 43]])
-# (2, [[2, 4, 5, 17, 24, 31, 45, 49, 50, 52, 68]])
-# (8, [[8, 10, 12, 20, 23, 25, 26, 28, 33, 37, 39, 42, 44, 46]])
-# (30, [[30, 35, 47, 48, 57, 67]])
-# (38, [[38, 40, 41, 51, 53, 55, 56, 58, 60, 65, 66, 69]])
-# (63, [[63, 70]])
-# (54, [[54]])
-# (59, [[59]])
-# (61, [[61]])
-# (62, [[62]])
-# (64, [[64]])
+print(clusters)
+# Clustering with 71 elements and 11 clusters
+# [ 0] 0, 1, 3, 6, 7, 9, 11, 13, 14, 15, 16, 18, 19, 21, 22, 27, 29, 32, 34, 36, 43
+# [ 1] 2, 4, 5, 17, 24, 31, 45, 49, 50, 52, 68
+# [ 2] 8, 10, 12, 20, 23, 25, 26, 28, 33, 37, 39, 42, 44, 46
+# [ 3] 30, 35, 47, 48, 57, 67
+# [ 4] 38, 40, 41, 51, 53, 55, 56, 58, 60, 65, 66, 69
+# [ 5] 54
+# [ 6] 59
+# [ 7] 61
+# [ 8] 62
+# [ 9] 63, 70
+# [10] 64
+
+cluster0 = [v for v in red_consejo.vs if v.index in clusters[0]]
+cluster1 = [v for v in red_consejo.vs if v.index in clusters[1]]
+cluster2 = [v for v in red_consejo.vs if v.index in clusters[2]]
+cluster3 = [v for v in red_consejo.vs if v.index in clusters[3]]
+cluster4 = [v for v in red_consejo.vs if v.index in clusters[4]]
+
+max(clusters.membership)
+# 10
+
+color_list = [
+    'red',    # cluster 0
+    'blue',   # cluster 1
+    'green',  # cluster 2
+    'cyan',   # cluster 3
+    'pink',   # cluster 4
+    'orange', # ...
+    'grey',   
+    'yellow', 
+    'white',
+    'black',
+    'purple'
+]
+
+plot(red_consejo, "walktrap.png", layout="kk", vertex_color=[color_list[x] for x in clusters.membership], vertex_size=5)
+
+# ver grado en los clusters principales
+for c in [cluster0, cluster2, cluster8]:
+    for v in c: print v, v.degree(mode="in"), v.degree(mode="out")
 
 
 
