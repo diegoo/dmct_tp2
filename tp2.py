@@ -6,7 +6,7 @@ from lazatt import atributos_de_vertices
 import pylab, matplotlib
 from itertools import izip
 from scipy.stats.stats import pearsonr   
-
+from itertools import groupby
 
 ## 1.1 construir grafo ADVICE
 
@@ -154,11 +154,60 @@ print(pearsonr(red_consejo_centralidad_por_autovector, red_consejo.vs["practice"
 # Graph.community_walktrap
 # Graph.community_leading_eigenvector
 
-comunidades_por_auto = [f(red_consejo) for f in funciones_deteccion_comunidad]
+comunidades = red_consejo.community_edge_betweenness()
+clusters = comunidades.as_clustering()
+for cluster, vertices in groupby(clusters, lambda x: x[0]): print(cluster, list(vertices))
+# (1, [[1, 7, 10, 12, 20, 23, 25, 26, 28, 33, 35, 37, 38, 40, 42, 51, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 69, 70]])
+# (24, [[24, 31, 49, 52, 68]])
+# el resto, clusters con 1 elemento
+cluster1 = [v for v in red_consejo.vs if v.index in [1, 7, 10, 12, 20, 23, 25, 26, 28, 33, 35, 37, 38, 40, 42, 51, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 69, 70]]
+cluster24 = [v for v in red_consejo.vs if v.index in [24, 31, 49, 52, 68]]
 
-for comunidades in red_consejo_comunidades_por_metodo:
-    print summary(comunidades)
-    n = communities.optimal_count
+comunidades = red_consejo.community_label_propagation()
+clusters_con_vertices = sorted([(cluster, vertice) for (vertice, cluster) in zip(range(0, 71), comunidades.membership)])
+for cluster, vertices in groupby(clusters_con_vertices, lambda x: x[0]): print(cluster, len(list(vertices)))
+cluster0 = [v for v in red_consejo.vs if v.index in [b for (a,b) in [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (0, 10), (0, 11), (0, 12), (0, 13), (0, 14), (0, 15), (0, 16), (0, 17), (0, 18), (0, 19), (0, 20), (0, 21), (0, 22), (0, 23), (0, 24), (0, 25), (0, 26), (0, 27), (0, 28), (0, 29), (0, 30), (0, 31), (0, 32), (0, 33), (0, 34), (0, 35), (0, 36), (0, 37), (0, 38), (0, 39), (0, 40), (0, 41), (0, 42), (0, 44), (0, 45), (0, 47), (0, 48), (0, 49), (0, 50), (0, 51), (0, 52), (0, 53), (0, 54), (0, 55), (0, 56), (0, 57), (0, 59), (0, 63), (0, 64), (0, 69)]]]
+# (0, [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (0, 10), (0, 11), (0, 12), (0, 13), (0, 14), (0, 15), (0, 16), (0, 17), (0, 18), (0, 19), (0, 20), (0, 21), (0, 22), (0, 23), (0, 24), (0, 25), (0, 26), (0, 27), (0, 28), (0, 29), (0, 30), (0, 31), (0, 32), (0, 33), (0, 34), (0, 35), (0, 36), (0, 37), (0, 38), (0, 39), (0, 40), (0, 41), (0, 42), (0, 44), (0, 45), (0, 47), (0, 48), (0, 49), (0, 50), (0, 51), (0, 52), (0, 53), (0, 54), (0, 55), (0, 56), (0, 57), (0, 59), (0, 63), (0, 64), (0, 69)])
+# (3, [(3, 58), (3, 68)])
+# (4, [(4, 60), (4, 61)])
+# (1, [(1, 43)])
+# (2, [(2, 46)])
+# (5, [(5, 62)])
+# (6, [(6, 65)])
+# (7, [(7, 66)])
+# (8, [(8, 67)])
+# (9, [(9, 70)])
+
+comunidades = red_consejo.community_walktrap()
+clusters = comunidades.as_clustering()
+for cluster, vertices in groupby(clusters, lambda x: x[0]): print(cluster, list(vertices))
+cluster0 = [v for v in red_consejo.vs if v.index in [0, 1, 3, 6, 7, 9, 11, 13, 14, 15, 16, 18, 19, 21, 22, 27, 29, 32, 34, 36, 43]]
+cluster2 = [v for v in red_consejo.vs if v.index in [2, 4, 5, 17, 24, 31, 45, 49, 50, 52, 68]]
+cluster8 = [v for v in red_consejo.vs if v.index in [8, 10, 12, 20, 23, 25, 26, 28, 33, 37, 39, 42, 44, 46]]
+cluster30 = [v for v in red_consejo.vs if v.index in [30, 35, 47, 48, 57, 67]]
+cluster38 = [v for v in red_consejo.vs if v.index in [38, 40, 41, 51, 53, 55, 56, 58, 60, 65, 66, 69]]
+# (0, [[0, 1, 3, 6, 7, 9, 11, 13, 14, 15, 16, 18, 19, 21, 22, 27, 29, 32, 34, 36, 43]])
+# (2, [[2, 4, 5, 17, 24, 31, 45, 49, 50, 52, 68]])
+# (8, [[8, 10, 12, 20, 23, 25, 26, 28, 33, 37, 39, 42, 44, 46]])
+# (30, [[30, 35, 47, 48, 57, 67]])
+# (38, [[38, 40, 41, 51, 53, 55, 56, 58, 60, 65, 66, 69]])
+# (63, [[63, 70]])
+# (54, [[54]])
+# (59, [[59]])
+# (61, [[61]])
+# (62, [[62]])
+# (64, [[64]])
+
+
+
+
+
+
+comunidades_por_infomap = Graph.community_infomap(red_consejo)
+
+for comunidades in [comunidades_por_infomap, comunidades_por_edge_betweenness]:
+    summary(comunidades)
+    n = comunidades.optimal_count
     communities.as_clustering(num_communities)
 
 red_consejo_clusters = red_consejo.community_edge_betweenness().as_clustering()

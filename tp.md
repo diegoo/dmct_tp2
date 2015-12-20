@@ -63,6 +63,14 @@ Si calculamos la correlación de Pearson entre los vectores de centralidad por a
 
 ### 4. Buscar comunidades y determinar si hay asociación entre comunidades y características personales
 
+El método de *label propagation* genera 11 clusters (uno de tamaño 59, el resto de 1), sin agrupación discernible.
+
+El método de *edge_betweenness* (la idea de que hay aristas con alta centralidad que conectan comunidades y se pueden quitar iterativamene para generar un dendrograma) genera 36 clusters (uno de tamaño 32, uno de 5, el resto de 1); el cluster mayoritario tiene abogados de la oficina de Boston (29/32); 11 socios, 21 no-socios.
+
+El método más efectivo para encontrar comunidades resultó ser *walktrap* (la idea de que random walks breves tienden a quedarse en la misma comunidad). Con este método se obtuvieron 11 clusters (de tamaños 21,14,12,11,6,2,1,1,1,1,1). El cluster más grande parece agrupar a socios de la firma (19/21), otro cluster agrupa abogados de la oficina de Hartford (9/11), otro agrupa a empleados no-socios de la oficina de Boston (11/12).
+
+
+
 
 
 ### 5.
