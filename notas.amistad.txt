@@ -96,3 +96,24 @@ Clustering with 71 elements and 3 clusters
 [1] 1, 3, 6, 8, 9, 11, 14, 15, 16, 18, 19, 21, 25, 28, 33, 36, 41, 43, 44, 45,
     46, 47, 52, 59, 60, 61, 63, 69
 [2] 4, 5, 13, 17, 24, 27, 29, 30, 31, 32, 34, 49, 50, 57, 58, 62
+
+
+amistad es 'backstage resource' 108 (96), o sea, no relacionado con una tarea particular.
+90% voto requerido para echar partner => amistad es útil (con tener 2 amigos incondicionales, ya no te echan)
+amistad suele ocurrir entre partners o entre associates, y entre los que fueron a la misma universidad; persiste durante sus carreras
+status 'games' y competencia se mitiga con amistad
+veían relación como principalmente unidad económica; hay bonding, pero poco soporte emocional
+para sobrevivir necesitan lazos duraderos con otros (son interdependientes de algunos de sus colegas).
+
+partners en redes de amistad 119 (107)
+
+factores que influyen a la hora de formar amistades:
+1) estructura formal de la empresa: en la red de amistad, los amigos se parecen en atributos formales y personales 135
+2) mismo nivel de seniority (pero miembros jóvenes tienden a considerar como amigos a miembros más senior)
+3) más débimente, misma especialidad, género o universidad
+
+
+
+
+
+
