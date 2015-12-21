@@ -1,0 +1,98 @@
+
+
+In [28]: print(red_amistad.ecount())
+726
+
+In [29]: print(red_amistad.vcount())
+71
+
+In [30]: print(red_amistad.diameter())
+3
+
+In [31]: print(red_amistad.is_directed())
+False
+
+In [32]: print(red_amistad.is_simple())
+False
+
+In [33]: print(red_amistad.is_connected())
+True
+
+In [34]: print(red_amistad.average_path_length())
+1.75130784708
+
+print(list(nodos_con_maximo_grado))
+[igraph.Vertex(<igraph.Graph object at 0x7f9d5dc35148>,25,{'status': 1, 'office': 1, 'gender': 1, 'age': 41, 'practice': 1, 'law_school': 3, 'seniority': 15})
+
+vertice_mayor_betweenness, vertice_mayor_closeness, vertice_mayor_centralidad_por_autovector = 25
+
+
+In [84]: print(pearsonr(red_amistad_betweenness, red_amistad.vs["status"]))
+(-0.33154160441249353, 0.0047370833421927954)
+
+In [85]: print(pearsonr(red_amistad_betweenness, red_amistad.vs["gender"]))
+(-0.1831915798439897, 0.12622147236327091)
+
+In [86]: print(pearsonr(red_amistad_betweenness, red_amistad.vs["age"]))
+(-0.0060395779383247685, 0.96013233035849077)
+
+In [87]: print(pearsonr(red_amistad_betweenness, red_amistad.vs["seniority"]))
+(0.13140280007915642, 0.27469640584419408)
+
+In [88]: print(pearsonr(red_amistad_betweenness, red_amistad.vs["office"]))
+(-0.15608127400255623, 0.19366865904813371)
+
+In [89]: print(pearsonr(red_amistad_betweenness, red_amistad.vs["law_school"]))
+(0.0015288736848700481, 0.98990395212903814)
+
+In [90]: print(pearsonr(red_amistad_betweenness, red_amistad.vs["practice"]))
+(-0.032906702110956955, 0.78529224513737794)
+
+
+In [92]: print(red_amistad_betweenness)
+
+cor(c(13.045831164304182, 11.911608697079425, 8.800669218526204, 34.41550751521951, 22.996880546590027, 7.517515451796617, 5.204844117203269, 4.695010998686158, 8.62766452996632, 11.815471047723182, 66.86910674266574, 52.38788846037304, 49.8060151843488, 15.656268858010543, 56.13549257286264, 32.50784785857941, 35.66922474746886, 5.644566435392857, 86.66300594937769, 32.169450746652394, 16.33212921362986, 49.59375047689519, 21.014319650736432, 67.066671517654, 10.514962344919565, 106.69369617674597, 37.06438981052743, 69.405065369314, 14.499434637349967, 59.658977956733295, 44.99800878339288, 18.814486662659796, 44.2183845305027, 38.358125759923986, 30.322862292185018, 17.91442062217586, 3.4599815538360166, 9.23048306804584, 12.9819448770278, 12.292849894528333, 51.222892292328474, 51.36161703861501, 14.365482664176113, 1.7522665407609548, 9.577428962985215, 10.83504861488776, 3.375434928660915, 22.551778573986688, 7.88361060148619, 19.64285154077419, 37.74092575709377, 23.821561142630678, 0.8605206197311461, 23.473466699537386, 27.441310388650002, 25.956495548475594, 14.112978127637913, 17.165106080666874, 2.041692185420732, 23.616168930905438, 1.7142136448828382, 13.341819509167202, 3.549498992386923, 72.37788021893563, 50.781474751429755, 31.672347340178476, 10.257377463193059, 9.440910393295137, 10.146316349377269, 14.408417986437337, 13.53629006969461), c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2))
+
+
+In [94]: print(pearsonr(red_amistad_centralidad_por_autovector, red_amistad.vs["status"]))
+(-0.11488392620692159, 0.3400784703302222)
+
+In [95]: print(pearsonr(red_amistad_centralidad_por_autovector, red_amistad.vs["gender"]))
+(-0.1583749055873877, 0.18712016917349275)
+
+In [96]: print(pearsonr(red_amistad_centralidad_por_autovector, red_amistad.vs["age"]))
+(-0.098042414732288502, 0.41597799831724813)
+
+In [97]: print(pearsonr(red_amistad_centralidad_por_autovector, red_amistad.vs["seniority"]))
+(0.044061395575064423, 0.71521950321346428)
+
+In [98]: print(pearsonr(red_amistad_centralidad_por_autovector, red_amistad.vs["office"]))
+(-0.48834335094615006, 1.5576933795827607e-05)
+
+In [99]: print(pearsonr(red_amistad_centralidad_por_autovector, red_amistad.vs["law_school"]))
+(-0.025809410262784365, 0.83082050949188835)
+
+In [100]: print(pearsonr(red_amistad_centralidad_por_autovector, red_amistad.vs["practice"]))
+(-0.46309100699509403, 4.7708001797661857e-05)
+
+correlación:
+por betweenness, sólo es significativa la correlación con status
+por autovectores, sólo son significativas las correlaciones con oficina y tipo de área legal
+
+
+red_amistad.assortativity_degree()
+Out[122]: 0.05182503072926765
+
+valor del coeficiente de asortividad sugiere que no hay asociaciones preferenciales por un lado entre nodos de alto grado, y por el otro entre los de bajo grado.
+
+
+
+comunidades por walktrap
+
+In [108]: print(clusters)
+Clustering with 71 elements and 3 clusters
+[0] 0, 2, 7, 10, 12, 20, 22, 23, 26, 35, 37, 38, 39, 40, 42, 48, 51, 53, 54,
+    55, 56, 64, 65, 66, 67, 68, 70
+[1] 1, 3, 6, 8, 9, 11, 14, 15, 16, 18, 19, 21, 25, 28, 33, 36, 41, 43, 44, 45,
+    46, 47, 52, 59, 60, 61, 63, 69
+[2] 4, 5, 13, 17, 24, 27, 29, 30, 31, 32, 34, 49, 50, 57, 58, 62
