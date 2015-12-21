@@ -112,6 +112,10 @@ factores que influyen a la hora de formar amistades:
 2) mismo nivel de seniority (pero miembros jóvenes tienden a considerar como amigos a miembros más senior)
 3) más débimente, misma especialidad, género o universidad
 
+controlando en cada red los efectos de las otras, oficina es el atributo más relevante para definir nichos => cada oficina es su propio sistema 135
+dentro de cada oficina, ese atributo es practice
+
+
 
 
 
