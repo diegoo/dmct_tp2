@@ -85,6 +85,8 @@ Un análisis del grado de los individuos en la red de consejos revela estos dato
   
  - cluster 4 (en rosa): Son *associates* (empleados no-socios), con poco seniority. Piden consejo a otros, pero ellos mismos son poco buscados por su consejo (grado saliente > grado entrante). En el libro de Lazega se corresponden con el cluster periférico llamado "the boys" (en criollo, los "che pibe" que hacen el trabajo de base, es decir, no los que toman las decisiones).
 
+Para evaluar el agrupamiento en comunidades, calculamos su modularidad: 0.15. Como se cumple que este valor es siempre mayor que el valor de modularidad calculado para 1000 agrupamientos al azar, concluimos que es significativo (cf. código en apéndice *advice.py*)
+
 
 ### 5.
 

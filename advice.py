@@ -7,6 +7,7 @@ import pylab, matplotlib
 from itertools import izip
 from scipy.stats.stats import pearsonr   
 from itertools import groupby
+from numpy.random import choice
 
 ## 1. construir grafo ADVICE
 
@@ -192,4 +193,19 @@ color_list = [
     'purple'
 ]
 # plot(red_consejo, "walktrap_clusters.png", layout="kk", vertex_color=[color_list[x] for x in clusters.membership], vertex_size=5)
+
+# modularidad:
+# cuán bien se separan los nodos con diferentes clases o atributos teniendo en cuenta la estructura de la red
+# fracción de nodos que caen en los grupos dados, menos la fracción esperada si cayeran al azar
+red_consejo_modularidad = red_consejo.modularity(clusters.membership)
+print(red_consejo_modularidad)
+# 0.15
+
+# modularidad para 1000 agrupamientos al azar
+modularidad_random_membership = list()
+for i in range(1000):
+    modularidad_random_membership.append(red_consejo.modularity(choice(range(0, 11), 71, replace=True).tolist()))
+
+all([red_consejo_modularidad > x for x in modularidad_random_membership])
+# True
 
