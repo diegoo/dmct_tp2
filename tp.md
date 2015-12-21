@@ -73,6 +73,24 @@ El método de *edge_betweenness* (la idea de que hay aristas con alta centralida
 
 El método más efectivo para encontrar comunidades resultó ser *walktrap* (la idea de que random walks breves tienden a quedarse en la misma comunidad). Con este método se obtuvieron 11 clusters (de tamaños 21,14,12,11,6,2,1,1,1,1,1). El cluster más grande (cluster 0) parece agrupar a socios de la firma (19/21), otro cluster (cluster 1) agrupa abogados de la oficina de Hartford (9/11), otro (cluster 2) agrupa el resto de los socios de la oficina principal, y otro (cluster 4) agrupa a empleados no-socios de la oficina de Boston (11/12).
 
+```
+---------------------------------------------------------------------------------
+|cluster | vértices (abogados)
+---------------------------------------------------------------------------------
+| [0]	|  [1, 2, 4, 7, 8, 10, 12, 14, 15, 16, 17, 19, 20, 22, 23, 28, 30, 33, 35, 37, 44]
+| [1]	|  [3, 5, 6, 18, 25, 32, 46, 50, 51, 53, 69]
+| [2]	|  [9, 11, 13, 21, 24, 26, 27, 29, 34, 38, 40, 43, 45, 47]
+| [3]	|  [31, 36, 48, 49, 58, 68]
+| [4]	|  [39, 41, 42, 52, 54, 56, 57, 59, 61, 66, 67, 70]
+| [5]	|  [55]
+| [6]	|  [60]
+| [7]	|  [62]
+| [8]	|  [63]
+| [9]	|  [64, 71]
+|[10]	|  [65]
+---------------------------------------------------------------------------------
+```
+
 Un análisis del grado de los individuos en la red de consejos revela estos datos sobre sus comunidades:
 
  [![walktrap_clusters](https://github.com/diegoo/dmct_tp2/blob/master/walktrap_clusters.png)](#walktrap_clusters)
