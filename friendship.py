@@ -7,6 +7,7 @@ import pylab, matplotlib
 from itertools import izip
 from scipy.stats.stats import pearsonr   
 from itertools import groupby
+from numpy.random import choice
 
 ## 1. construir grafo FRIENDSHIP
 
@@ -132,10 +133,8 @@ clusters = comunidades.as_clustering()
 
 print(clusters)
 # Clustering with 71 elements and 3 clusters
-# [0] 0, 2, 7, 10, 12, 20, 22, 23, 26, 35, 37, 38, 39, 40, 42, 48, 51, 53, 54,
-#     55, 56, 64, 65, 66, 67, 68, 70
-# [1] 1, 3, 6, 8, 9, 11, 14, 15, 16, 18, 19, 21, 25, 28, 33, 36, 41, 43, 44, 45,
-#     46, 47, 52, 59, 60, 61, 63, 69
+# [0] 0, 2, 7, 10, 12, 20, 22, 23, 26, 35, 37, 38, 39, 40, 42, 48, 51, 53, 54, 55, 56, 64, 65, 66, 67, 68, 70
+# [1] 1, 3, 6, 8, 9, 11, 14, 15, 16, 18, 19, 21, 25, 28, 33, 36, 41, 43, 44, 45,46, 47, 52, 59, 60, 61, 63, 69
 # [2] 4, 5, 13, 17, 24, 27, 29, 30, 31, 32, 34, 49, 50, 57, 58, 62
 
 cluster0 = [vertice for vertice in red_amistad.vs if vertice.index in clusters[0]]
@@ -156,3 +155,15 @@ color_list = [
     'orange'
 ]
 plot(red_amistad, "walktrap_clusters_amistad.png", layout="kk", vertex_color=[color_list[x] for x in clusters.membership], vertex_size=5)
+
+red_amistad_modularidad = red_amistad.modularity(clusters.membership)
+print(red_amistad_modularidad)
+# 0.15
+
+# modularidad para 1000 agrupamientos al azar
+modularidad_random_membership = list()
+for i in range(1000):
+    modularidad_random_membership.append(red_amistad.modularity(choice(range(0, 3), 71, replace=True).tolist()))
+
+all([red_amistad_modularidad > x for x in modularidad_random_membership])
+# True
